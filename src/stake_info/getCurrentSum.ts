@@ -2,7 +2,7 @@ import getCurrentSumGenerator from '@kot-shrodingera-team/germes-generators/stak
 
 const getCurrentSum = getCurrentSumGenerator({
   sumInput: '[id^="stake"]',
-  zeroValues: ['Сумма:'],
+  zeroValues: ['Сумма:', 'Stake:'],
   // currentSumRegex: /(\d+(?:\.\d+)?)/,
 });
 

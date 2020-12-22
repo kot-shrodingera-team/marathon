@@ -8,7 +8,9 @@ const checkStakeStatus = (): boolean => {
   if (betResult) {
     const betResultText = betResult.textContent.trim();
     if (
-      /Ваша ставка принята, спасибо|Пари принято, спасибо/i.test(betResultText)
+      /Ваша ставка принята, спасибо|Пари принято, спасибо|Thank you for placing your bet./i.test(
+        betResultText
+      )
     ) {
       log('Ставка принята', 'green');
       return true;
