@@ -14,7 +14,7 @@ const getParameter = (): number => {
 
   const outcome = selectionNameElement.textContent.trim();
   // const market = marketElement.textContent.trim();
-  const parameterRegex = /([+-]?\d+(?:\.\d+)?)\)?/;
+  const parameterRegex = /([+-]?\d+(?:\.\d+)?)\)?$/;
   const parameterMatch = outcome.match(parameterRegex);
   if (parameterMatch) {
     return Number(parameterMatch[1]);
