@@ -5,6 +5,10 @@ const checkStakeStatus = (): boolean => {
     '#result-dialog[style="display: block;"] #betresult'
   );
 
+  const betResultDetails = document.querySelector(
+    '#result-dialog[style="display: block;"] #detail-result'
+  );
+
   if (betResult) {
     const betResultText = betResult.textContent.trim();
     if (
@@ -15,7 +19,14 @@ const checkStakeStatus = (): boolean => {
       log('Ставка принята', 'green');
       return true;
     }
+    log(betResultText, 'tomato');
+    if (betResultDetails) {
+      const betResultDetailsText = betResultDetails.textContent.trim();
+      log(betResultDetailsText, 'tomato');
+    }
+    return false;
   }
+
   log('Неизвестный результат ставки. Считаем ставку непринятой', 'red');
   return false;
 };
