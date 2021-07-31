@@ -1,5 +1,5 @@
 import getStakeInfoGenerator from '@kot-shrodingera-team/germes-generators/worker_callbacks/getStakeInfo';
-import { log } from '@kot-shrodingera-team/germes-utils';
+// import { log } from '@kot-shrodingera-team/germes-utils';
 import checkAuth from '../stake_info/checkAuth';
 import getStakeCount from '../stake_info/getStakeCount';
 import getBalance from '../stake_info/getBalance';
@@ -11,19 +11,12 @@ import getMaximumStake from '../stake_info/getMaximumStake';
 import getCurrentSum from '../stake_info/getCurrentSum';
 import showStake, { isCouponOpenning } from '../show_stake';
 
-const preAction = (): boolean => {
-  const applyChangesButton = document.querySelector(
-    '#betslip_apply_choices_block:not([style="display: none;"]) #betslip_apply_choices'
-  ) as HTMLElement;
-  if (applyChangesButton) {
-    log('В купоне изменения. Принимаем', 'orange');
-    applyChangesButton.click();
-  }
-  return true;
-};
+// const preAction = (): boolean => {
+//   return true;
+// };
 
 const getStakeInfo = getStakeInfoGenerator({
-  preAction,
+  // preAction,
   isCouponOpenning,
   showStake,
   checkAuth,
