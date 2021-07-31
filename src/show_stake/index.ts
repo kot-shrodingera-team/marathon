@@ -9,12 +9,14 @@ import openEvent from './openEvent';
 import preCheck from './preCheck';
 import getCoefficient from '../stake_info/getCoefficient';
 import getMaximumStake from '../stake_info/getMaximumStake';
+import { clearGermesData } from '../bookmakerApi';
 
 let couponOpenning = false;
 
 export const isCouponOpenning = (): boolean => couponOpenning;
 
 const showStake = async (): Promise<void> => {
+  clearGermesData();
   localStorage.setItem('couponOpening', '1');
   couponOpenning = true;
   try {
