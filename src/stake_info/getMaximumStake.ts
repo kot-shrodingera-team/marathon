@@ -33,14 +33,14 @@ const getMaximumStakeBase = getMaximumStakeGenerator({
   // removeRegex: /[\s,']/g,
 });
 
-const getMaximumStake = (): number => {
+const getMaximumStake = (disableLog = false): number => {
   if (/^(www\.)?marathonbet\.by$/.test(window.location.hostname)) {
     if (maximumStake) {
       return maximumStake;
     }
     return getBalance();
   }
-  return getMaximumStakeBase();
+  return getMaximumStakeBase(disableLog);
 };
 
 export default getMaximumStake;

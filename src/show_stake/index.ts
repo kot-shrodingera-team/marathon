@@ -7,6 +7,8 @@ import NewUrlError from './errors/newUrlError';
 import openBet from './openBet';
 import openEvent from './openEvent';
 import preCheck from './preCheck';
+import getCoefficient from '../stake_info/getCoefficient';
+import getMaximumStake from '../stake_info/getMaximumStake';
 
 let couponOpenning = false;
 
@@ -43,6 +45,30 @@ const showStake = async (): Promise<void> => {
     couponOpenning = false;
     localStorage.setItem('couponOpening', '0');
     localStorage.setItem('newUrlError', '0');
+    window.germesData.updateMaximumIntervalId = setInterval(() => {
+      const newMax = getMaximumStake(true);
+      if (newMax && newMax !== window.germesData.manualMax) {
+        log(
+          `Обновляем макс ${window.germesData.manualMax} => ${newMax}`,
+          'orange'
+        );
+        window.germesData.manualMax = newMax;
+        worker.StakeInfo.MaxSumm = newMax;
+        worker.JSMaxChange(newMax);
+      }
+    }, 200);
+    window.germesData.updateCoefIntervalId = setInterval(() => {
+      const newCoef = getCoefficient(true);
+      if (newCoef && newCoef !== window.germesData.manualCoef) {
+        log(
+          `Обновляем кэф ${window.germesData.manualCoef} => ${newCoef}`,
+          'orange'
+        );
+        window.germesData.manualCoef = newCoef;
+        worker.StakeInfo.Coef = newCoef;
+        worker.JSCoefChange(newCoef);
+      }
+    }, 200);
     worker.JSStop();
   } catch (error) {
     if (error instanceof JsFailError) {

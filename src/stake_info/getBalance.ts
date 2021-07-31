@@ -28,6 +28,7 @@ const getBalance = getBalanceGenerator({
 });
 
 export const updateWorkerBalance = (): void => {
+  worker.StakeInfo.Balance = getBalance();
   worker.JSBalanceChange(getBalance());
 };
 
