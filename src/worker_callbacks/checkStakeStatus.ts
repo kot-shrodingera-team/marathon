@@ -9,6 +9,10 @@ const checkStakeStatus = (): boolean => {
     '#result-dialog[style="display: block;"] #detail-result'
   );
 
+  const betResultCancelButton = document.querySelector<HTMLElement>(
+    '#result-dialog[style="display: block;"] #cancel-button'
+  );
+
   if (betResult) {
     const betResultText = betResult.textContent.trim();
     if (
@@ -23,6 +27,12 @@ const checkStakeStatus = (): boolean => {
     if (betResultDetails) {
       const betResultDetailsText = betResultDetails.textContent.trim();
       log(betResultDetailsText, 'tomato');
+    }
+    if (betResultCancelButton) {
+      log('Отменяем', 'orange');
+      betResultCancelButton.click();
+    } else {
+      log('Не найдена кнопка отмены', 'steelblue');
     }
     return false;
   }
