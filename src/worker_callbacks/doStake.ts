@@ -8,7 +8,7 @@ const preCheck = (): boolean => {
     '#betslip_apply_choices_block:not([style="display: none;"]) #betslip_apply_choices'
   );
   if (applyChangesButton) {
-    log('В купоне изменения. Ставку не делаем', 'crimson');
+    log('Принимаем изменения. Ставку не делаем', 'crimson');
     return false;
   }
   return true;
