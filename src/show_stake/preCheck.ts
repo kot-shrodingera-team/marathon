@@ -6,7 +6,7 @@ import NewUrlError from './errors/newUrlError';
 const preCheck = async (): Promise<void> => {
   log(`window.location.href = "${window.location.href}"`, 'white', true);
   log(`worker.EventUrl = "${worker.EventUrl}"`, 'white', true);
-  if (window.location.href === worker.EventUrl) {
+  if (window.location.href.endsWith(worker.EventId)) {
     log('Открыто нужное событие', 'steelblue');
   } else {
     if (localStorage.getItem('newUrlError') === '1') {
