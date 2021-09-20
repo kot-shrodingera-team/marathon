@@ -4,7 +4,7 @@ import {
 } from '@kot-shrodingera-team/germes-generators/stake_info/getBalance';
 
 export const balanceReady = balanceReadyGenerator({
-  balanceSelector: '[data-punter-balance-type="main"]',
+  balanceSelector: '.balance__value_main',
   // balanceRegex: /(\d+(?:\.\d+)?)/,
   // replaceDataArray: [
   //   {
@@ -16,7 +16,7 @@ export const balanceReady = balanceReadyGenerator({
 });
 
 const getBalance = getBalanceGenerator({
-  balanceSelector: '[data-punter-balance-type="main"]',
+  balanceSelector: '.balance__value_main',
   // balanceRegex: /(\d+(?:\.\d+)?)/,
   // replaceDataArray: [
   //   {
